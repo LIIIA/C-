@@ -404,6 +404,7 @@ begins:
 				cout << endl;
 				dispstop(car);
 				c1.gettime = 0;
+				goto begins;
 				break;
 			}
 			if (enQueue(q1, c1))//车库满了，车辆排队
@@ -512,5 +513,9 @@ begins:
 	cout << "输入有错误，系统崩溃" << endl;
 out:
 	cout << "系统已经退出" << endl;
+	free(q1);
+	free(q2);
+	
+	
 	return 0;
 }
