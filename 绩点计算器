@@ -1,0 +1,98 @@
+/*GPA*/ 
+#include<iostream>
+
+using  namespace  std;
+
+int main()
+{
+	double sum = 0;
+	double all = 0;
+	double classa[200];
+	double classb[200];
+	string classc[200];
+	bool x = true;
+	int a1=0;	
+	cout<<"若想退出本系统或者是输入完毕 请学科名字输入0"<<endl;
+	cout<<endl; 
+	while(1)
+	{
+		double a;
+		double b;
+		string c;
+		cout<<"请输入当前学科名字:";
+		cin>>c;	
+		if(c=="0")
+		{
+			x=false; 
+			break;	
+		} 
+a5:	
+		cout<<"请输入当前学科学分:";
+		cin>>a;
+		if(a<0||a>5)
+		{
+			cout<<"您的输入有误请重新输入(范围0-5)"<<endl;
+			goto a5;
+		}
+a6:
+		cout<<"请输入当前学科成绩:";
+		cin>>b;
+		if(b>100||b<0)
+		{
+			cout<<"您的输入有误请重新输入（范围=>0或<=101"<<endl;
+			goto a6;
+		 } 
+		classc[a1]=c;
+		classb[a1]=b;
+		classa[a1]=a;
+		a1++;
+		if(b<60)
+		{
+			x=false;
+			continue;
+		} 
+	
+		b = (b-60)/10+1;
+		sum+=a;
+		all += a*b;
+		
+			
+	}
+	if(all!=0)
+	{
+		x=true; 
+	} 
+	int a2=0;
+	system("cls");
+	cout<<"==================您的各科成绩=================="<<endl;
+	//cout<<"课程名字"<<"\t"<<"课程学分"<<"\t"<<"课程成绩"<<endl;
+	int max = 0;
+	for(int i = 0;i<a1;i++)
+	{
+		if(classc[i].length()>max)
+		{
+			max=classc[i].length();
+		}
+	}
+	max+=1;
+	while(a2<a1)
+	{
+		cout<<"课程名字："<<classc[a2];
+		for(int i=0;i<max-classc[a2].length();i++)
+		{
+			cout<<" ";
+		}
+		cout<<"  课程学分："<<classa[a2]<<"  课程成绩："<<classb[a2]<<endl;
+		a2++;
+	}
+	if(x==false)
+	{
+		cout<<"您的绩点为: 0"<<endl;
+		system("pause"); 
+		return 0; 
+	}
+	cout<<endl;
+	cout<< "您的绩点为:"<<all / sum<<endl ;
+	system("pause"); 
+	return 0;
+}
